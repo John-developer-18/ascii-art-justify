@@ -10,16 +10,16 @@ import (
 
 var lineWidth = 0
 var termWidth = os.Getenv("COLUMNS")
-var termWidthInt, err = strconv.Atoi(termWidth)
+var termWidthInt, _ = strconv.Atoi(termWidth)
 
-func processInput(option string, strVal string, banner string) (final string, err error) {
+func ProcessInput(option string, strVal string, banner string) (final string, err error) {
 
 	var rawLetters []string
-	path := "../" + "assets" + "/" + banner + ".txt"
+	path := "./" + "assets" + "/" + banner + ".txt"
 	file, err := os.Open(path)
 
 	if err != nil {
-		return "", fmt.Errorf("Invalid")
+		return "", fmt.Errorf("Invalid 1")
 	}
 
 	defer file.Close()
@@ -33,7 +33,7 @@ func processInput(option string, strVal string, banner string) (final string, er
 	err = scanner.Err()
 
 	if err != nil {
-		return "", fmt.Errorf("Invalid")
+		return "", fmt.Errorf("Invalid 2")
 	}
 
 	processedLetters := chunkSlice(rawLetters, 9)
@@ -87,7 +87,8 @@ func printChar(hold [][]string, option string) (buildString string) {
 		}
 		if option == "right" {
 			diff := termWidthInt - lineWidth
-			buildString = strings.Repeat(" ", diff) + temp + "\n"
+			buildString += strings.Repeat(" ", diff) + temp + "\n"
+			temp = ""
 		}
 	}
 	return
