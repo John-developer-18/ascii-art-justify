@@ -19,7 +19,7 @@ func ReceiveInput(option string, strVal string, banner string) (string, error) {
 	}
 
 	if !slices.Contains(validOptions, option) || !slices.Contains(validBanners, banner) {
-		return "", fmt.Errorf("Invalid input")
+		return "", fmt.Errorf("Invalid Input")
 	}
 	str, err := ProcessInput(option, strVal, banner)
 	if err != nil {

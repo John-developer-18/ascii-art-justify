@@ -78,6 +78,7 @@ func getCharWidth(hold [][]string) int {
 	}
 	return len(buildString)
 }
+
 func printChar(hold [][]string, option string) (buildString string) {
 	//assume the length of i is 9
 	var temp string
